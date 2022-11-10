@@ -26,6 +26,8 @@ public class Formateur {
     private Boolean statusInterne;
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Adresse adresse;
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    private Stagiaire stagiaire;
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "matiere_formateur",
@@ -50,7 +52,7 @@ public class Formateur {
      * @param adresse Adresse
      * @param matieres List<Matiere>
      */
-    public Formateur(Civilite civilite, String nom, String prenom, String email, String dateEmbauche, String niveauExperience, Boolean statusInterne, Adresse adresse, List<Matiere> matieres) {
+    public Formateur(Civilite civilite, String nom, String prenom, String email, String dateEmbauche, String niveauExperience, Boolean statusInterne, Adresse adresse, List<Matiere> matieres, Stagiaire stagiaire) {
         this.civilite = civilite;
         this.nom = nom;
         this.prenom = prenom;
@@ -60,6 +62,7 @@ public class Formateur {
         this.statusInterne = statusInterne;
         this.adresse = adresse;
         this.matieres = matieres;
+        this.stagiaire = stagiaire;
     }
 
     /**
@@ -75,7 +78,7 @@ public class Formateur {
      * @param adresse Adresse
      * @param matieres List<Matiere>
      */
-    public Formateur(Long id, Civilite civilite, String nom, String prenom, String email, String dateEmbauche, String niveauExperience, Boolean statusInterne, Adresse adresse, List<Matiere> matieres) {
+    public Formateur(Long id, Civilite civilite, String nom, String prenom, String email, String dateEmbauche, String niveauExperience, Boolean statusInterne, Adresse adresse, List<Matiere> matieres, Stagiaire stagiaire) {
         this.id = id;
         this.civilite = civilite;
         this.nom = nom;
@@ -86,6 +89,7 @@ public class Formateur {
         this.statusInterne = statusInterne;
         this.adresse = adresse;
         this.matieres = matieres;
+        this.stagiaire = stagiaire;
     }
 
     public Long getId() {
@@ -166,5 +170,13 @@ public class Formateur {
 
     public void setMatieres(List<Matiere> matieres) {
         this.matieres = matieres;
+    }
+
+    public Stagiaire getStagiaire() {
+        return stagiaire;
+    }
+
+    public void setStagiaire(Stagiaire stagiaire) {
+        this.stagiaire = stagiaire;
     }
 }
